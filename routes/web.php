@@ -14,4 +14,48 @@
 Route::get('/', function () {
     return view('welcome');
 });
+	
+Route::get('/phpinfo', function () {
+    phpinfo();
+});
+
+
+// 支付测试
 Route::get('/test/alipay','Test\AlipayController@alipay');
+// 同步回调
+Route::get('/test/return','Test\AlipayController@aliReturn');
+// 异步回调
+Route::post('/test/notify','Test\AlipayController@notify');
+
+// 接口测试 get
+Route::get('Api/get','Api\TestController@get');
+// 接口测试 注册
+Route::post('Api/reg','Api\TestController@reg');
+// 接口测试 登陆
+Route::post('Api/login','Api\TestController@login');
+// 接口测试 登陆
+Route::post('Api/UserList','Api\TestController@UserList')->middleware('List');
+
+// curl get 请求
+Route::get('pass/curl1','Test\PassController@curl1');
+// curl post 请求
+Route::get('pass/curl2','Test\PassController@curl2');
+// curl 发送 post 文件 请求
+Route::get('pass/curl3','Test\PassController@curl3');
+// curl 发送字符串 json | xml
+Route::get('pass/curl4','Test\PassController@curl4');
+
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+// 用户管理
+Route::get('/user/addkey','User\IndexController@addSSHKey1');
+Route::post('/user/addkey','User\IndexController@addSSHKey2');
+//解密数据
+Route::get('/user/decrypt/data','User\IndexController@decrypt1');
+Route::post('/user/decrypt/data','User\IndexController@decrypt2');
+

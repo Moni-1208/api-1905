@@ -27,7 +27,7 @@ class AlipayController extends Controller
     	// 1 请求参数
     	$out_trade_no=time().rand(1111,9999); // 商户订单号
     	$product_code='FAST_INSTANT_TRADE_PAY';
-    	$total_amount=0.01;
+    	$total_amount=254.1;
     	$subject='测试订单'.$out_trade_no;
 
 
@@ -46,7 +46,8 @@ class AlipayController extends Controller
     		'sign_type'     =>$sign_type,
     		'timestamp'     =>$timestamp,
     		'version'       =>$version,
-    		'notify_url'    =>$notify_url,
+            'notify_url'    =>$notify_url,
+    		'return_url'    =>$return_url,
     		'biz_content'   =>json_encode($request_param)
     	];
 
@@ -65,7 +66,6 @@ class AlipayController extends Controller
         $key=storage_path('keys/app_priv'); // 保存文件路径
         $priKey=file_get_contents($key);  // 把文件读入一个字符串
         $res=openssl_get_privatekey($priKey); // 判断私钥是否是可用的，可用返回资源id Resource id
-        var_dump($res);echo '<br/>';
         openssl_sign($str, $sign, $res,OPENSSL_ALGO_SHA256); // 对内容进行加密并输出乱码
         $sign=base64_encode($sign); // base64_encode是加密,而base64_decode是解密
         $param['sign']=$sign;
@@ -77,10 +77,11 @@ class AlipayController extends Controller
         }
         $param_str=rtrim($param_str,'&');
         $url=$ali_geteway . $param_str;
-
+        // echo 12345;
     	// 发送GET请求
-        echo $url;die;
-        header("Locatiom:".$url); // 跳转页面
+        // echo $url;die;
+        header("Location:".$url); // 跳转页面
 
     }
+
 }
