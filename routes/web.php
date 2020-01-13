@@ -45,6 +45,19 @@ Route::get('pass/curl3','Test\PassController@curl3');
 // curl 发送字符串 json | xml
 Route::get('pass/curl4','Test\PassController@curl4');
 
+// 签名测试
+Route::get('pass/sign1','Test\PassController@sign1');
+// 自定义 签名测试
+Route::get('pass/sign2','Test\PassController@sign2');
+
+// 验签 注册 
+Route::get('check/reg','Check\SignController@reg');
+// 登陆
+Route::get('check/login','Check\SignController@login');
+
+// 获取用户信息接口
+Route::get('check/showTime','Check\SignController@showTime');
+
 
 
 
@@ -58,4 +71,8 @@ Route::post('/user/addkey','User\IndexController@addSSHKey2');
 //解密数据
 Route::get('/user/decrypt/data','User\IndexController@decrypt1');
 Route::post('/user/decrypt/data','User\IndexController@decrypt2');
-
+// 在线验签 signonlie
+Route::get('/test/get/signonlie','Sign\IndexController@signOnline');
+Route::post('/test/post/signonlie','Sign\IndexController@signOnline1');
+Route::get('/test/get/sign1','Sign\IndexController@sign1');
+Route::post('/test/post/sign2','Sign\IndexController@sign2');;

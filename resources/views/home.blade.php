@@ -18,8 +18,9 @@
                     <br>
                         <a href="/user/addkey">添加公钥</a>
 
-
                         <a href="/user/decrypt/data">解密数据</a>
+
+                        <a href="/test/get/signonlie">在线验签</a>
                     </br>
                 </div>
             </div>
