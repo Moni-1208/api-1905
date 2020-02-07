@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/cc', function () {
     return view('welcome');
 });
 	
@@ -56,7 +56,7 @@ Route::get('check/reg','Check\SignController@reg');
 Route::get('check/login','Check\SignController@login');
 
 // 获取用户信息接口
-Route::get('check/showTime','Check\SignController@showTime');
+Route::get('check/showTime','Check\SignController@showTime')->middleware('users');
 
 
 
@@ -75,4 +75,14 @@ Route::post('/user/decrypt/data','User\IndexController@decrypt2');
 Route::get('/test/get/signonlie','Sign\IndexController@signOnline');
 Route::post('/test/post/signonlie','Sign\IndexController@signOnline1');
 Route::get('/test/get/sign1','Sign\IndexController@sign1');
-Route::post('/test/post/sign2','Sign\IndexController@sign2');;
+Route::post('/test/post/sign2','Sign\IndexController@sign2');
+
+
+// 前台
+Route::get('/','Index\IndexController@index');
+// 注册
+Route::get('/reg','Index\IndexController@reg');
+// 登陆
+Route::get('/login','Index\IndexController@login');
+
+Route::get('/pass/md5test','Pass\TestController@md5test');
