@@ -18,12 +18,14 @@ class TestController extends Controller
         // $signature = 'asdfsdf';
 
         echo "待发送的数据为：". $data;
+        echo "</br>";
 
         echo "签名为：". $signature;
+        echo "</br>";
 
         //发送数据
-        $url = "http://1905h5.com/test/test?data=".$data . '&signature='.$signature;
-        echo $url;
+        $url = "http://1905.h5.com/test/tests?data=".$data . '&signature='.$signature;
+        echo "url为：".$url;
 
         $response = file_get_contents($url);
         echo $response;
