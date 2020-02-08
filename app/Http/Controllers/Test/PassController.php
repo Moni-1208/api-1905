@@ -109,7 +109,8 @@ class PassController extends Controller
     }
 
     /**
-     * 签名测试
+     * 
+     私钥签名测试
      */
     public function sign1()
     {

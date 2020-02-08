@@ -86,3 +86,4 @@ Route::get('/reg','Index\IndexController@reg');
 Route::get('/login','Index\IndexController@login');
 
 Route::get('/pass/md5test','Pass\TestController@md5test');
+Route::get('/pass/md5post','Pass\TestController@md5post');
